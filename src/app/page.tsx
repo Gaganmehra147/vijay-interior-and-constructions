@@ -5,7 +5,6 @@ import HeroSection from "@/components/home/HeroSection";
 import BrandStatement from "@/components/home/BrandStatement";
 import ServicesSection from "@/components/home/ServicesSection";
 import ProjectShowcase from "@/components/home/ProjectShowcase";
-import ThreeDViewer from "@/components/home/ThreeDViewer";
 import WhyVijaySection from "@/components/home/WhyVijaySection";
 import BeforeAfterSlider from "@/components/home/BeforeAfterSlider";
 import ProcessSection from "@/components/home/ProcessSection";
@@ -14,7 +13,8 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 import LeadEnquirySection from "@/components/home/LeadEnquirySection";
 import MobileStickyBar from "@/components/shared/MobileStickyBar";
 
-export const dynamic = "force-dynamic";
+// ISR Caching: Serve instant static HTML from Render, regenerate in background every 60s
+export const revalidate = 60;
 
 export default async function HomePage() {
   // Query all database records concurrently for performance
@@ -53,8 +53,8 @@ export default async function HomePage() {
     settings[s.key] = s.value;
   });
 
-  const phone = settings.phone || "+91 98765 43210";
-  const whatsapp = settings.whatsapp || "+91 98765 43210";
+  const phone = settings.phone || "+91 97543 95862, +91 62634 34513";
+  const whatsapp = settings.whatsapp || "+91 70003 01077";
 
   return (
     <div className="relative min-h-screen flex flex-col bg-[#FBF9F5]">
@@ -69,11 +69,12 @@ export default async function HomePage() {
             "description":
               settings.tagline ||
               "Premium Interior Design, Architecture & Turnkey Construction Company",
-            "telephone": phone,
+            "telephone": "+91 97543 95862",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": settings.address || "Plot 42, Architectural Enclave",
-              "addressLocality": "New Delhi",
+              "streetAddress": settings.address || "Shop No. 10, Sanjeevani Nagar, Garha",
+              "addressLocality": "Jabalpur",
+              "addressRegion": "Madhya Pradesh",
               "addressCountry": "IN",
             },
             "priceRange": "₹₹₹₹",
@@ -99,10 +100,7 @@ export default async function HomePage() {
         {/* 4. Selected Projects Masonry Showcase */}
         <ProjectShowcase projects={projects} />
 
-        {/* 5. 3D Architectural Spatial Experience */}
-        <ThreeDViewer />
-
-        {/* 6. Why Vijay Trust Metrics */}
+        {/* 5. Why Vijay Trust Metrics */}
         <WhyVijaySection stats={stats} />
 
         {/* 7. Before / After Transformation Slider */}

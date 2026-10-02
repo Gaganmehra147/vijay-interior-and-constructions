@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Compass, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowDown } from "lucide-react";
 
 export default function HeroSection() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -13,8 +14,8 @@ export default function HeroSection() {
       if (!containerRef.current) return;
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
-      const x = (clientX / innerWidth - 0.5) * 18;
-      const y = (clientY / innerHeight - 0.5) * 18;
+      const x = (clientX / innerWidth - 0.5) * 10;
+      const y = (clientY / innerHeight - 0.5) * 10;
       setMousePos({ x, y });
     };
 
@@ -25,150 +26,105 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center pt-32 sm:pt-36 lg:pt-40 pb-20 sm:pb-24 overflow-hidden bg-[#141414] text-[#FBF9F5]"
+      className="relative min-h-[100svh] w-full flex flex-col justify-between pt-24 sm:pt-28 lg:pt-32 pb-6 sm:pb-10 overflow-hidden bg-[#181614] text-[#FBF9F5]"
     >
-      {/* Background Architectural Photography with subtle parallax */}
+      {/* Editorial High-Resolution Background Photography with Next.js LCP Priority Preload */}
       <div
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out scale-105 opacity-35"
+        className="absolute inset-0 transition-transform duration-1000 ease-out will-change-transform scale-105"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2400&q=90')`,
-          transform: `scale(1.05) translate3d(${mousePos.x * -0.5}px, ${mousePos.y * -0.5}px, 0)`,
+          transform: `scale(1.03) translate3d(${mousePos.x * -0.3}px, ${mousePos.y * -0.3}px, 0)`,
         }}
-      />
+      >
+        <Image
+          src="/images/hero-editorial.jpg"
+          alt="Vijay Interior & Construction Architectural Studio"
+          fill
+          priority
+          sizes="100vw"
+          quality={80}
+          className="object-cover object-center"
+        />
+      </div>
 
-      {/* Blueprint Grid Overlay & Vignette */}
-      <div className="absolute inset-0 architectural-grid-dark opacity-30 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/60 to-[#141414]/80 pointer-events-none" />
+      {/* Atmospheric Editorial Vignette & Warm Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/20 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-black/40 pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 w-full space-y-8 sm:space-y-12">
-        {/* Precision Blueprint Coordinates & Ticks Bar - Cleanly aligned at top */}
-        <div className="hidden md:flex items-center justify-between text-[10px] font-mono-tech uppercase tracking-[0.25em] text-[#C5A880]/85 border-b border-white/10 pb-3.5">
-          <span>PROJECT STUDIO • LAT 28°36&apos;N / LONG 77°12&apos;E</span>
-          <span>ELEVATION +0.00 • TURNKEY & CIVIL ARCHITECTURE</span>
-          <span>SPEC: ARCH-2026-VIJAY</span>
-        </div>
+      {/* Subtle organic light bloom */}
+      <div className="absolute top-1/4 left-1/3 w-80 h-80 bg-[#C5A880]/15 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Main Hero Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Hero Content */}
-          <div className="lg:col-span-8 space-y-7">
-            {/* Eyebrow Badge */}
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 border border-[#C5A880]/50 bg-[#1A1A1A]/90 text-[#C5A880] text-[9px] sm:text-xs uppercase tracking-[0.16em] sm:tracking-[0.24em] font-semibold backdrop-blur-md shadow-sm max-w-full">
-                <span className="w-1.5 h-1.5 bg-[#C5A880] rounded-full animate-pulse shrink-0" />
-                <span className="truncate sm:overflow-visible">
-                  INTERIOR DESIGN • ARCHITECTURE • CONSTRUCTION
-                </span>
-              </div>
-            </div>
+      {/* Top spacer */}
+      <div className="relative z-10 w-full" />
 
-            {/* Headline */}
-            <h1 className="font-serif-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight leading-[1.04] text-white">
-              Spaces Designed <br />
-              <span className="italic font-editorial-quote font-normal text-[#F4EFEA]/90">
-                To Be Lived In.
-              </span>
-            </h1>
-
-            {/* Supporting Text */}
-            <p className="text-stone-300 text-sm sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl">
-              From thoughtful interiors to complete civil construction,{" "}
-              <strong className="text-white font-medium">
-                Vijay Interior & Construction
-              </strong>{" "}
-              creates refined spaces built around the way you live. Single-source
-              accountability from concept sketches to turnkey handover.
-            </p>
-
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 pt-2 sm:pt-3">
-              <Link
-                href="/projects"
-                className="group inline-flex items-center justify-center gap-3 px-7 sm:px-8 py-3.5 sm:py-4 bg-[#FBF9F5] text-[#141414] text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-300 hover:bg-[#C5A880] hover:text-[#141414] min-h-[48px]"
-              >
-                <span>Explore Our Work</span>
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0" />
-              </Link>
-
-              <Link
-                href="/#enquire"
-                className="inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 border border-white/30 text-white text-xs uppercase tracking-[0.2em] font-medium transition-all duration-300 hover:bg-white/10 hover:border-white min-h-[48px]"
-              >
-                <span>Start Your Project</span>
-              </Link>
-            </div>
+      {/* Main Editorial Hero Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full my-auto py-2 sm:py-4">
+        <div className="max-w-3xl space-y-4 sm:space-y-6">
+          {/* Studio Tagline Eyebrow */}
+          <div className="inline-flex items-center gap-3">
+            <span className="w-6 sm:w-8 h-px bg-[#C5A880]" />
+            <span className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-mono-tech text-[#EAE4DC] font-light">
+              VIJAY STUDIO • ARCHITECTURE & BESPOKE INTERIORS
+            </span>
           </div>
 
-          {/* Right Floating Architectural Spec Card */}
-          <div className="lg:col-span-4 flex justify-end w-full">
-            <div
-              className="w-full max-w-full lg:max-w-sm border border-white/15 bg-[#1F1E1D]/80 backdrop-blur-xl p-5 sm:p-7 space-y-5 sm:space-y-6 shadow-2xl transition-transform duration-500 hover:border-[#C5A880]/50"
-              style={{
-                transform: `translate3d(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px, 0)`,
-              }}
+          {/* High-Impact Magazine Title: MATERIAL. Meaning. MOOD. */}
+          <h1 className="text-white text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] xl:text-[6.2rem] tracking-tight leading-[0.92] select-none">
+            <span className="block font-serif tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-white">
+              MATERIAL.
+            </span>
+            <span className="block font-editorial-quote italic font-normal text-[#F4EFEA] tracking-wide -my-1 sm:-my-2 drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]">
+              Meaning.
+            </span>
+            <span className="block font-serif tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-white">
+              MOOD.
+            </span>
+          </h1>
+
+          {/* Clean Understated Architectural Descriptor */}
+          <p className="text-stone-200/90 text-xs sm:text-sm md:text-base font-light leading-relaxed max-w-lg pt-1 sm:pt-2 drop-shadow-sm">
+            Curating timeless residential sanctuaries and turnkey civil builds rooted in pure materiality, emotional resonance, and architectural permanence.
+          </p>
+
+          {/* Clean Minimalist Action Links */}
+          <div className="pt-2 sm:pt-4 flex flex-wrap items-center gap-6 sm:gap-8">
+            {/* Primary Underlined Minimalist Link: GET IN TOUCH → */}
+            <Link
+              href="/#enquire"
+              className="group inline-flex items-center gap-2.5 text-xs sm:text-sm uppercase tracking-[0.25em] text-white font-medium hover:text-[#C5A880] transition-colors pb-1 border-b border-white/50 hover:border-[#C5A880]"
             >
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <span className="text-[10px] font-mono-tech uppercase tracking-[0.2em] text-[#C5A880]">
-                  DISCIPLINE MATRIX
-                </span>
-                <span className="text-[10px] font-mono-tech text-stone-400">
-                  REF 01-A
-                </span>
-              </div>
+              <span>GET IN TOUCH</span>
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5 text-[#C5A880]" />
+            </Link>
 
-              <div className="space-y-4 text-xs">
-                <div className="flex items-start gap-3">
-                  <Compass className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-white font-medium uppercase tracking-wider text-[11px]">
-                      Spatial Architecture
-                    </div>
-                    <div className="text-stone-400 text-[11px] leading-relaxed">
-                      Micro-climatic planning, natural ventilation & monolithic layouts.
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Sparkles className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-white font-medium uppercase tracking-wider text-[11px]">
-                      Bespoke Interiors
-                    </div>
-                    <div className="text-stone-400 text-[11px] leading-relaxed">
-                      Italian marble bookmatching, fumed oak millwork & tailored lighting.
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <ShieldCheck className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-white font-medium uppercase tracking-wider text-[11px]">
-                      Turnkey Civil Execution
-                    </div>
-                    <div className="text-stone-400 text-[11px] leading-relaxed">
-                      Rigorous laboratory-tested concrete, structural framing & zero-leakage guarantee.
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[10px] font-mono-tech text-stone-400">
-                <span>EST. 2012</span>
-                <span className="text-[#C5A880]">180+ HOMES & HUBS</span>
-              </div>
-            </div>
+            {/* Secondary Minimalist Link: EXPLORE PORTFOLIO */}
+            <Link
+              href="/projects"
+              className="group inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-[0.25em] text-stone-300 hover:text-white transition-colors pb-1 border-b border-transparent hover:border-white/30"
+            >
+              <span>EXPLORE PORTFOLIO</span>
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Bottom Scroll Indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none opacity-60">
-        <span className="text-[9px] uppercase tracking-[0.25em] font-mono-tech text-stone-300">
-          SCROLL TO EXPLORE
-        </span>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-[#C5A880] to-transparent animate-pulse" />
+      {/* Bottom Editorial Hairline Bar & Scroll Indicator */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full pt-4 sm:pt-6 border-t border-white/15 flex items-center justify-between text-[10px] sm:text-[11px] font-mono-tech text-stone-300 tracking-[0.2em] uppercase">
+        <div className="hidden sm:flex items-center gap-3">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#C5A880] animate-pulse" />
+          <span>JABALPUR (M.P.) • ARCHITECTURE & BESPOKE INTERIORS</span>
+        </div>
+
+        <a
+          href="#manifesto"
+          className="mx-auto sm:mx-0 inline-flex items-center gap-2 text-stone-300 hover:text-white transition-colors cursor-pointer group"
+        >
+          <span>SCROLL TO EXPLORE</span>
+          <ArrowDown className="w-3.5 h-3.5 text-[#C5A880] transition-transform group-hover:translate-y-1" />
+        </a>
+
+        <div className="hidden md:block text-stone-400">
+          <span>EST. 2012 • BESPOKE CRAFT</span>
+        </div>
       </div>
     </section>
   );

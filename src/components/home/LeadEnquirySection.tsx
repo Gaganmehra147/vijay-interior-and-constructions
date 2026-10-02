@@ -9,8 +9,8 @@ interface LeadEnquirySectionProps {
 }
 
 export default function LeadEnquirySection({
-  phone = "+91 98765 43210",
-  whatsapp = "+91 98765 43210",
+  phone = "+91 97543 95862, +91 62634 34513",
+  whatsapp = "+91 70003 01077",
 }: LeadEnquirySectionProps) {
   const [formData, setFormData] = useState({
     name: "",
@@ -110,18 +110,28 @@ export default function LeadEnquirySection({
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <a
-                  href={`tel:${phone.replace(/\s+/g, "")}`}
-                  className="flex items-center gap-3 p-4 border border-white/15 bg-[#1A1A1A] hover:border-[#C5A880] transition-colors"
-                >
-                  <Phone className="w-4 h-4 text-[#C5A880]" />
-                  <div>
+                <div className="flex items-center gap-3 p-4 border border-white/15 bg-[#1A1A1A]">
+                  <Phone className="w-4 h-4 text-[#C5A880] shrink-0" />
+                  <div className="space-y-0.5">
                     <div className="text-[10px] font-mono-tech text-stone-400 uppercase">
                       Call Studio
                     </div>
-                    <div className="text-xs font-medium text-white">{phone}</div>
+                    <div className="text-xs font-medium text-white flex flex-col gap-0.5">
+                      {phone.split(",").map((p) => {
+                        const clean = p.trim();
+                        return (
+                          <a
+                            key={clean}
+                            href={`tel:${clean.replace(/\D/g, "")}`}
+                            className="hover:text-[#C5A880] transition-colors"
+                          >
+                            {clean}
+                          </a>
+                        );
+                      })}
+                    </div>
                   </div>
-                </a>
+                </div>
 
                 <a
                   href={`https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}?text=Hello%20Vijay%20Interior,%20I%20would%20like%20to%20discuss%20a%20new%20project.`}

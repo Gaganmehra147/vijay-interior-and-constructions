@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 
 interface FooterProps {
@@ -7,12 +8,12 @@ interface FooterProps {
 
 export default function Footer({ settings = {} }: FooterProps) {
   const businessName = settings.business_name || "Vijay Interior & Construction";
-  const phone = settings.phone || "+91 98765 43210";
-  const whatsapp = settings.whatsapp || "+91 98765 43210";
+  const phone = settings.phone || "+91 97543 95862, +91 62634 34513";
+  const whatsapp = settings.whatsapp || "+91 70003 01077";
   const email = settings.email || "contact@vijayinterior.com";
-  const address = settings.address || "Plot 42, Architectural Enclave, Design District, New Delhi 110001";
+  const address = settings.address || "Shop No. 10, Sanjeevani Nagar, Garha, Jabalpur (M.P.)";
   const workingHours = settings.working_hours || "Monday – Saturday: 9:30 AM – 7:00 PM";
-  const mapsUrl = settings.google_maps_url || "https://maps.google.com";
+  const mapsUrl = settings.google_maps_url || "https://maps.google.com/?q=Shop+No+10+Sanjeevani+Nagar+Garha+Jabalpur";
 
   return (
     <footer className="bg-[#121212] text-[#FBF9F5] border-t border-white/10 relative overflow-hidden">
@@ -47,17 +48,15 @@ export default function Footer({ settings = {} }: FooterProps) {
         {/* Brand Column */}
         <div className="lg:col-span-2 space-y-6">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 border border-[#C5A880] flex items-center justify-center bg-[#1A1A1A] text-[#C5A880]">
-              <span className="font-serif-heading text-sm font-semibold">V</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-serif-heading text-lg font-bold tracking-[0.18em] text-white">
-                VIJAY
-              </span>
-              <span className="text-[9px] uppercase tracking-[0.24em] text-[#C5A880]">
-                Interior & Construction
-              </span>
-            </div>
+            <Link href="/" className="inline-block group">
+              <Image
+                src="/logo-transparent.png"
+                alt={businessName}
+                width={240}
+                height={147}
+                className="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_4px_16px_rgba(218,165,32,0.3)]"
+              />
+            </Link>
           </div>
           <p className="text-stone-400 leading-relaxed text-xs max-w-sm">
             {settings.footer_bio ||
@@ -173,11 +172,22 @@ export default function Footer({ settings = {} }: FooterProps) {
               <MapPin className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
               <span>{address}</span>
             </div>
-            <div className="flex items-center gap-2.5">
-              <Phone className="w-4 h-4 text-[#C5A880] shrink-0" />
-              <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hover:text-white transition-colors">
-                {phone}
-              </a>
+            <div className="flex items-start gap-2.5">
+              <Phone className="w-4 h-4 text-[#C5A880] shrink-0 mt-0.5" />
+              <div className="flex flex-col gap-1">
+                {phone.split(",").map((p) => {
+                  const clean = p.trim();
+                  return (
+                    <a
+                      key={clean}
+                      href={`tel:${clean.replace(/\D/g, "")}`}
+                      className="hover:text-white transition-colors"
+                    >
+                      {clean}
+                    </a>
+                  );
+                })}
+              </div>
             </div>
             <div className="flex items-center gap-2.5">
               <Mail className="w-4 h-4 text-[#C5A880] shrink-0" />

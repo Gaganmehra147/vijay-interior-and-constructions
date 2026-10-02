@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Lock, Mail, ArrowRight, Shield, AlertCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AdminLoginPage() {
   const [email, setEmail] = useState("admin@vijayinterior.com");
@@ -50,9 +51,16 @@ export default function AdminLoginPage() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md relative z-10 px-4">
         {/* Brand Icon */}
         <div className="flex justify-center mb-4">
-          <div className="w-12 h-12 border-2 border-[#C5A880] flex items-center justify-center bg-[#1A1A1A]">
-            <span className="font-serif-heading text-lg font-bold text-[#C5A880]">V</span>
-          </div>
+          <Link href="/" className="inline-block transition-transform duration-300 hover:scale-105">
+            <Image
+              src="/logo-transparent.png"
+              alt="Vijay Construction & Interior"
+              width={240}
+              height={147}
+              className="h-20 w-auto object-contain drop-shadow-[0_4px_16px_rgba(197,168,128,0.3)]"
+              priority
+            />
+          </Link>
         </div>
 
         <h2 className="text-center font-serif-heading text-2xl sm:text-3xl font-bold tracking-tight text-white">

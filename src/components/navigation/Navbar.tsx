@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, Phone, MessageCircle } from "lucide-react";
 
@@ -10,10 +11,16 @@ interface NavbarProps {
   whatsapp?: string;
 }
 
-export default function Navbar({ phone = "+91 98765 43210", whatsapp = "+91 98765 43210" }: NavbarProps) {
+export default function Navbar({
+  phone = "+91 97543 95862, +91 62634 34513",
+  whatsapp = "+91 70003 01077",
+}: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  const primaryPhone = phone.split(",")[0]?.trim() || phone;
+  const secondaryPhone = phone.split(",")[1]?.trim();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,27 +75,24 @@ export default function Navbar({ phone = "+91 98765 43210", whatsapp = "+91 9876
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
           scrolled
-            ? "bg-[#141414]/95 backdrop-blur-md shadow-2xl border-b border-white/10 py-3"
-            : "bg-gradient-to-b from-[#141414]/95 via-[#141414]/60 to-transparent py-3.5 sm:py-4"
+            ? "bg-[#141414]/95 backdrop-blur-md shadow-2xl border-white/10 py-3"
+            : "bg-black/25 backdrop-blur-md border-white/15 py-3.5 sm:py-4"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 sm:gap-6">
           {/* Left: Brand Identity Logo */}
-          <Link href="/" className="group flex items-center gap-3 shrink-0">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 border border-[#C5A880] flex items-center justify-center transition-transform duration-500 group-hover:rotate-45 bg-[#1C1B1A] text-[#C5A880] shadow-sm shrink-0">
-              <span className="font-serif-heading text-sm font-bold tracking-wider transition-transform duration-500 group-hover:-rotate-45">
-                V
-              </span>
-            </div>
-            <div className="flex flex-col justify-center">
-              <span className="font-serif-heading text-lg sm:text-xl font-bold tracking-[0.2em] leading-none text-white group-hover:text-[#C5A880] transition-colors whitespace-nowrap">
-                VIJAY
-              </span>
-              <span className="text-[8px] sm:text-[8.5px] uppercase tracking-[0.24em] text-[#C5A880] font-medium leading-none mt-1 whitespace-nowrap">
-                Interior & Construction
-              </span>
+          <Link href="/" className="group flex items-center gap-3 shrink-0 py-0.5">
+            <div className="relative h-11 sm:h-12 w-auto flex items-center">
+              <Image
+                src="/logo-transparent.png"
+                alt="Vijay Construction & Interior"
+                width={160}
+                height={98}
+                className="h-11 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_12px_rgba(218,165,32,0.35)]"
+                priority
+              />
             </div>
           </Link>
 
@@ -118,19 +122,30 @@ export default function Navbar({ phone = "+91 98765 43210", whatsapp = "+91 9876
           {/* Right: Architectural Phone & Start Project CTA - Perfectly aligned and guaranteed not to truncate */}
           <div className="hidden lg:flex items-center gap-3.5 xl:gap-5 shrink-0">
             {/* Phone Link with Architectural Icon Badge */}
-            <a
-              href={`tel:${phone.replace(/\s+/g, "")}`}
-              className="group/phone inline-flex items-center gap-2.5 text-stone-200 hover:text-[#C5A880] transition-colors py-1 whitespace-nowrap"
-              title={`Call Studio: ${phone}`}
-              aria-label={`Call Studio: ${phone}`}
-            >
-              <span className="w-7 h-7 border border-white/20 flex items-center justify-center bg-white/5 group-hover/phone:border-[#C5A880] group-hover/phone:bg-[#C5A880]/10 transition-colors shrink-0">
-                <Phone className="w-3.5 h-3.5 text-[#C5A880]" />
-              </span>
-              <span className="font-mono-tech text-[11px] xl:text-xs tracking-wider text-stone-200 group-hover/phone:text-white transition-colors">
-                {phone}
-              </span>
-            </a>
+            <div className="flex items-center">
+              <a
+                href={`tel:${primaryPhone.replace(/\D/g, "")}`}
+                className="group/phone inline-flex items-center gap-2.5 text-stone-200 hover:text-[#C5A880] transition-colors py-1 whitespace-nowrap"
+                title={`Call Studio: ${primaryPhone}`}
+                aria-label={`Call Studio: ${primaryPhone}`}
+              >
+                <span className="w-7 h-7 border border-white/20 flex items-center justify-center bg-white/5 group-hover/phone:border-[#C5A880] group-hover/phone:bg-[#C5A880]/10 transition-colors shrink-0">
+                  <Phone className="w-3.5 h-3.5 text-[#C5A880]" />
+                </span>
+                <span className="font-mono-tech text-[11px] xl:text-xs tracking-wider text-stone-200 group-hover/phone:text-white transition-colors">
+                  {primaryPhone}
+                </span>
+              </a>
+              {secondaryPhone && (
+                <a
+                  href={`tel:${secondaryPhone.replace(/\D/g, "")}`}
+                  className="hidden 2xl:inline-flex items-center text-[11px] font-mono-tech text-stone-400 hover:text-[#C5A880] transition-colors ml-2 pl-2 border-l border-white/20"
+                  title={`Alternative: ${secondaryPhone}`}
+                >
+                  {secondaryPhone}
+                </a>
+              )}
+            </div>
 
             {/* Architectural Hairline Divider */}
             <div className="h-4 w-px bg-white/20 shrink-0 hidden xl:block" />
@@ -169,17 +184,13 @@ export default function Navbar({ phone = "+91 98765 43210", whatsapp = "+91 9876
             <div className="pt-2 sm:pt-4">
               <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 border border-[#C5A880] flex items-center justify-center bg-[#1C1B1A] text-[#C5A880]">
-                    <span className="font-serif-heading text-sm font-bold">V</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-serif-heading text-lg font-bold tracking-[0.2em] text-white">
-                      VIJAY
-                    </span>
-                    <span className="text-[8px] uppercase tracking-[0.26em] text-[#C5A880]">
-                      Interior & Construction
-                    </span>
-                  </div>
+                  <Image
+                    src="/logo-transparent.png"
+                    alt="Vijay Construction & Interior"
+                    width={150}
+                    height={92}
+                    className="h-11 w-auto object-contain drop-shadow-[0_2px_10px_rgba(218,165,32,0.3)]"
+                  />
                 </div>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
@@ -224,7 +235,7 @@ export default function Navbar({ phone = "+91 98765 43210", whatsapp = "+91 9876
 
               <div className="grid grid-cols-2 gap-3 pt-1">
                 <a
-                  href={`tel:${phone.replace(/\s+/g, "")}`}
+                  href={`tel:${primaryPhone.replace(/\D/g, "")}`}
                   className="flex items-center justify-center gap-2 py-2.5 border border-white/20 text-xs tracking-wider text-white hover:border-[#C5A880] transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#C5A880]" />

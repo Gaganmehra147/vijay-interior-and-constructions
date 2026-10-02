@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cinzel, Cormorant_Garamond, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { prisma } from "@/lib/prisma";
+import GlobalWidgets from "@/components/shared/GlobalWidgets";
 
 const cinzel = Cinzel({
   variable: "--font-cinzel",
@@ -38,6 +39,10 @@ export async function generateMetadata(): Promise<Metadata> {
       description:
         seo?.description ||
         "Refined architecture, bespoke residential & commercial interiors, and turnkey civil construction.",
+      icons: {
+        icon: "/logo-transparent.png",
+        apple: "/logo-transparent.png",
+      },
       openGraph: {
         title: seo?.title || "Vijay Interior & Construction",
         description: seo?.description || "Spaces Designed To Be Lived In.",
@@ -48,6 +53,10 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
       title: "Vijay Interior & Construction | Luxury Architecture & Construction",
       description: "Spaces Designed To Be Lived In.",
+      icons: {
+        icon: "/logo-transparent.png",
+        apple: "/logo-transparent.png",
+      },
     };
   }
 }
@@ -62,8 +71,13 @@ export default function RootLayout({
       lang="en"
       className={`${plusJakarta.variable} ${cinzel.variable} ${cormorant.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      </head>
       <body className="min-h-screen bg-[#FBF9F5] text-[#141414] antialiased selection:bg-[#C5A880]/30 selection:text-[#141414]">
         {children}
+        <GlobalWidgets whatsapp="+91 70003 01077" />
       </body>
     </html>
   );

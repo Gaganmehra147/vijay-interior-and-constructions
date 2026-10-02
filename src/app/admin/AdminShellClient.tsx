@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
@@ -88,12 +89,16 @@ export default function AdminShellClient({
             {drawerOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
 
-          <Link href="/admin" className="flex items-center gap-2.5">
-            <div className="w-7 h-7 border border-[#C5A880] flex items-center justify-center bg-[#1A1A1A] text-[#C5A880]">
-              <span className="font-serif-heading text-xs font-semibold">V</span>
-            </div>
-            <span className="font-serif-heading text-sm font-bold tracking-wider text-white">
-              VIJAY CMS
+          <Link href="/admin" className="flex items-center gap-2">
+            <Image
+              src="/logo-transparent.png"
+              alt="Vijay CMS"
+              width={120}
+              height={70}
+              className="h-9 w-auto object-contain"
+            />
+            <span className="font-serif-heading text-xs font-bold tracking-wider text-[#C5A880] border-l border-white/20 pl-2">
+              CMS
             </span>
           </Link>
         </div>
@@ -124,18 +129,17 @@ export default function AdminShellClient({
             <div>
               {/* Drawer Brand Header */}
               <div className="flex items-center justify-between pb-5 border-b border-white/10 mb-4">
-                <Link href="/admin" className="flex items-center gap-3">
-                  <div className="w-8 h-8 border border-[#C5A880] flex items-center justify-center bg-[#1A1A1A] text-[#C5A880]">
-                    <span className="font-serif-heading text-sm font-semibold">V</span>
-                  </div>
-                  <div>
-                    <div className="font-serif-heading text-sm font-bold tracking-wider text-white">
-                      VIJAY CMS
-                    </div>
-                    <div className="text-[9px] uppercase tracking-widest text-[#C5A880] font-mono-tech">
-                      Studio Admin
-                    </div>
-                  </div>
+                <Link href="/admin" className="flex items-center gap-2.5">
+                  <Image
+                    src="/logo-transparent.png"
+                    alt="Vijay CMS"
+                    width={130}
+                    height={80}
+                    className="h-10 w-auto object-contain"
+                  />
+                  <span className="text-[10px] uppercase tracking-widest text-[#C5A880] font-mono-tech border-l border-white/20 pl-2">
+                    CMS
+                  </span>
                 </Link>
                 <button
                   onClick={() => setDrawerOpen(false)}
@@ -202,17 +206,13 @@ export default function AdminShellClient({
           {/* Studio Brand Header */}
           <div className="p-6 border-b border-white/10">
             <Link href="/admin" className="flex items-center gap-3">
-              <div className="w-8 h-8 border border-[#C5A880] flex items-center justify-center bg-[#1A1A1A] text-[#C5A880]">
-                <span className="font-serif-heading text-sm font-semibold">V</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-serif-heading text-sm font-bold tracking-wider text-white">
-                  VIJAY CMS
-                </span>
-                <span className="text-[9px] uppercase tracking-widest text-[#C5A880] font-mono-tech">
-                  Studio Admin
-                </span>
-              </div>
+              <Image
+                src="/logo-transparent.png"
+                alt="Vijay CMS"
+                width={160}
+                height={98}
+                className="h-12 w-auto object-contain drop-shadow-[0_2px_8px_rgba(197,168,128,0.2)]"
+              />
             </Link>
           </div>
 

@@ -5,7 +5,7 @@ import LeadEnquirySection from "@/components/home/LeadEnquirySection";
 import MobileStickyBar from "@/components/shared/MobileStickyBar";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function ContactPage() {
   const rawSettings = await prisma.siteSetting.findMany();
@@ -14,12 +14,12 @@ export default async function ContactPage() {
     settings[s.key] = s.value;
   });
 
-  const phone = settings.phone || "+91 98765 43210";
-  const whatsapp = settings.whatsapp || "+91 98765 43210";
+  const phone = settings.phone || "+91 97543 95862, +91 62634 34513";
+  const whatsapp = settings.whatsapp || "+91 70003 01077";
   const email = settings.email || "contact@vijayinterior.com";
-  const address = settings.address || "Plot 42, Architectural Enclave, Design District, New Delhi 110001";
+  const address = settings.address || "Shop No. 10, Sanjeevani Nagar, Garha, Jabalpur (M.P.)";
   const workingHours = settings.working_hours || "Monday – Saturday: 9:30 AM – 7:00 PM";
-  const mapsUrl = settings.google_maps_url || "https://maps.google.com";
+  const mapsUrl = settings.google_maps_url || "https://maps.google.com/?q=Shop+No+10+Sanjeevani+Nagar+Garha+Jabalpur";
 
   return (
     <div className="relative min-h-screen flex flex-col bg-[#FBF9F5]">
@@ -67,11 +67,16 @@ export default async function ContactPage() {
               <div className="text-xs uppercase font-mono-tech tracking-wider text-stone-500">
                 Direct Telephony
               </div>
-              <p className="text-xs text-stone-800">
-                <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hover:underline">
-                  {phone}
-                </a>
-              </p>
+              <div className="text-xs text-stone-800 flex flex-col gap-1">
+                {phone.split(",").map((p) => {
+                  const clean = p.trim();
+                  return (
+                    <a key={clean} href={`tel:${clean.replace(/\D/g, "")}`} className="hover:underline">
+                      {clean}
+                    </a>
+                  );
+                })}
+              </div>
               <div className="text-[11px] text-stone-500">Direct Principal Desk</div>
             </div>
 

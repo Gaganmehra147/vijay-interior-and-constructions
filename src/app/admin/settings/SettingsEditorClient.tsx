@@ -78,7 +78,7 @@ export default function SettingsEditorClient({
             </label>
             <input
               type="text"
-              value={settings.phone || "+91 98765 43210"}
+              value={settings.phone || "+91 97543 95862, +91 62634 34513"}
               onChange={(e) => handleChange("phone", e.target.value)}
               className="w-full bg-[#1A1A1A] border border-white/15 px-3 py-2 text-white"
             />
@@ -90,7 +90,7 @@ export default function SettingsEditorClient({
             </label>
             <input
               type="text"
-              value={settings.whatsapp || "+91 98765 43210"}
+              value={settings.whatsapp || "+91 70003 01077"}
               onChange={(e) => handleChange("whatsapp", e.target.value)}
               className="w-full bg-[#1A1A1A] border border-white/15 px-3 py-2 text-white"
             />
@@ -123,7 +123,7 @@ export default function SettingsEditorClient({
             </label>
             <input
               type="text"
-              value={settings.address || "Plot 42, Architectural Enclave, Design District, New Delhi 110001"}
+              value={settings.address || "Shop No. 10, Sanjeevani Nagar, Garha, Jabalpur (M.P.)"}
               onChange={(e) => handleChange("address", e.target.value)}
               className="w-full bg-[#1A1A1A] border border-white/15 px-3 py-2 text-white"
             />

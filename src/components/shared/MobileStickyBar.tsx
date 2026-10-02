@@ -7,10 +7,11 @@ interface MobileStickyBarProps {
 }
 
 export default function MobileStickyBar({
-  phone = "+91 98765 43210",
-  whatsapp = "+91 98765 43210",
+  phone = "+91 97543 95862, +91 62634 34513",
+  whatsapp = "+91 70003 01077",
 }: MobileStickyBarProps) {
-  const cleanPhone = phone.replace(/\s+/g, "");
+  const primaryPhone = phone.split(",")[0]?.trim() || phone;
+  const cleanPhone = primaryPhone.replace(/\D/g, "");
   const cleanWa = whatsapp.replace(/[^0-9]/g, "");
 
   return (
