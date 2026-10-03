@@ -95,17 +95,17 @@ export default async function HomePage() {
         {/* 2. Brand Editorial Statement */}
         <BrandStatement />
 
-        {/* 3. Interactive Horizontal Services */}
+        {/* 3. Founder's Profile: Vijay Ahirwar */}
+        <FoundersProfile instagramUrl={settings.instagram} phone={phone} />
+
+        {/* 4. Interactive Horizontal Services */}
         <ServicesSection services={services} />
 
-        {/* 4. Selected Projects Masonry Showcase */}
+        {/* 5. Selected Projects Masonry Showcase */}
         <ProjectShowcase projects={projects} />
 
-        {/* 5. Why Vijay Trust Metrics */}
+        {/* 6. Why Vijay Trust Metrics */}
         <WhyVijaySection stats={stats} />
-
-        {/* 6. Founder's Profile: Vijay Ahirwar */}
-        <FoundersProfile instagramUrl={settings.instagram} phone={phone} />
 
         {/* 7. Before / After Transformation Slider */}
         <BeforeAfterSlider />

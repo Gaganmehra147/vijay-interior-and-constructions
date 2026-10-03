@@ -112,6 +112,11 @@ export default function Footer({ settings = {} }: FooterProps) {
               </Link>
             </li>
             <li>
+              <Link href="/#founder" className="hover:text-[#C5A880] transition-colors">
+                Founder&apos;s Profile
+              </Link>
+            </li>
+            <li>
               <Link href="/services" className="hover:text-[#C5A880] transition-colors">
                 Disciplines & Services
               </Link>
