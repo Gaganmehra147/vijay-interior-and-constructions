@@ -17,7 +17,7 @@ export default async function ContactPage() {
 
   const phone = settings.phone || "+91 97543 95862, +91 62634 34513";
   const whatsapp = settings.whatsapp || "+91 70003 01077";
-  const email = settings.email || "contact@vijayinterior.com";
+  const email = settings.email || "Vijaykumarahirwar743@gmail.com";
   const address = settings.address || "Shop No. 10, Sanjeevani Nagar, Garha, Jabalpur (M.P.)";
   const workingHours = settings.working_hours || "Monday – Saturday: 9:30 AM – 7:00 PM";
   const mapsUrl = settings.google_maps_url || "https://maps.google.com/?q=Shop+No+10+Sanjeevani+Nagar+Garha+Jabalpur";

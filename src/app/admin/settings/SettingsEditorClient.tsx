@@ -102,7 +102,7 @@ export default function SettingsEditorClient({
             </label>
             <input
               type="email"
-              value={settings.email || "contact@vijayinterior.com"}
+              value={settings.email || "Vijaykumarahirwar743@gmail.com"}
               onChange={(e) => handleChange("email", e.target.value)}
               className="w-full bg-[#1A1A1A] border border-white/15 px-3 py-2 text-white"
             />

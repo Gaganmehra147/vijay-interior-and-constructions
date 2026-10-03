@@ -582,7 +582,7 @@ async function main() {
     { key: "tagline", value: "Spaces Designed To Be Lived In." },
     { key: "phone", value: "+91 98765 43210" },
     { key: "whatsapp", value: "+91 98765 43210" },
-    { key: "email", value: "contact@vijayinterior.com" },
+    { key: "email", value: "Vijaykumarahirwar743@gmail.com" },
     { key: "address", value: "Plot 42, Architectural Enclave, Design District, New Delhi 110001" },
     { key: "working_hours", value: "Monday – Saturday: 9:30 AM – 7:00 PM" },
     { key: "google_maps_url", value: "https://maps.google.com/?q=New+Delhi+Design+District" },

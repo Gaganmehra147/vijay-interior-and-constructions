@@ -67,16 +67,16 @@ export default function HeroSection() {
             </span>
           </div>
 
-          {/* High-Impact Magazine Title: MATERIAL. Meaning. MOOD. */}
+          {/* High-Impact Architectural Title: BUILD. Interiors. TRANSFORM. */}
           <h1 className="text-white text-4xl sm:text-6xl md:text-7xl lg:text-[5.4rem] xl:text-[6.2rem] tracking-tight leading-[0.92] select-none">
             <span className="block font-serif tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-white">
-              MATERIAL.
+              BUILD.
             </span>
             <span className="block font-editorial-quote italic font-normal text-[#F4EFEA] tracking-wide -my-1 sm:-my-2 drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]">
-              Meaning.
+              Interiors.
             </span>
             <span className="block font-serif tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] text-white">
-              MOOD.
+              TRANSFORM.
             </span>
           </h1>
 
