@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import Navbar from "@/components/navigation/Navbar";
 import Footer from "@/components/navigation/Footer";
 import MobileStickyBar from "@/components/shared/MobileStickyBar";
+import FoundersProfile from "@/components/home/FoundersProfile";
 import { ShieldCheck, Ruler, Compass, Sparkles, Award, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
@@ -116,6 +117,9 @@ export default async function AboutPage() {
             </div>
           </div>
         </div>
+
+        {/* Founder's Journey & Profile */}
+        <FoundersProfile instagramUrl={settings.instagram} phone={phone} />
 
         {/* Live Trust Stats Bar */}
         <div className="max-w-7xl mx-auto px-6 sm:px-8 py-20">

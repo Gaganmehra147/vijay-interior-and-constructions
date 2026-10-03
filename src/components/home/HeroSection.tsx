@@ -63,7 +63,7 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-3">
             <span className="w-6 sm:w-8 h-px bg-[#C5A880]" />
             <span className="text-[10px] sm:text-xs uppercase tracking-[0.28em] font-mono-tech text-[#EAE4DC] font-light">
-              VIJAY STUDIO • ARCHITECTURE & BESPOKE INTERIORS
+              VIJAY STUDIO • CIVIL CONSTRUCTION & BESPOKE INTERIORS
             </span>
           </div>
 
@@ -80,9 +80,9 @@ export default function HeroSection() {
             </span>
           </h1>
 
-          {/* Clean Understated Architectural Descriptor */}
-          <p className="text-stone-200/90 text-xs sm:text-sm md:text-base font-light leading-relaxed max-w-lg pt-1 sm:pt-2 drop-shadow-sm">
-            Curating timeless residential sanctuaries and turnkey civil builds rooted in pure materiality, emotional resonance, and architectural permanence.
+          {/* Clean Understated Architectural Descriptor - Tailored to Construction & Interiors */}
+          <p className="text-stone-200/95 text-xs sm:text-sm md:text-base font-light leading-relaxed max-w-xl pt-1 sm:pt-2 drop-shadow-sm">
+            From turnkey civil construction & structural excellence to bespoke luxury interiors and complete renovations — we build and transform residential & commercial spaces with precision engineering, master craftsmanship, and timeless design.
           </p>
 
           {/* Clean Minimalist Action Links */}

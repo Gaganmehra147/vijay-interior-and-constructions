@@ -4,6 +4,7 @@ import Footer from "@/components/navigation/Footer";
 import LeadEnquirySection from "@/components/home/LeadEnquirySection";
 import MobileStickyBar from "@/components/shared/MobileStickyBar";
 import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
+import InstagramIcon from "@/components/icons/InstagramIcon";
 
 export const revalidate = 60;
 
@@ -20,6 +21,7 @@ export default async function ContactPage() {
   const address = settings.address || "Shop No. 10, Sanjeevani Nagar, Garha, Jabalpur (M.P.)";
   const workingHours = settings.working_hours || "Monday – Saturday: 9:30 AM – 7:00 PM";
   const mapsUrl = settings.google_maps_url || "https://maps.google.com/?q=Shop+No+10+Sanjeevani+Nagar+Garha+Jabalpur";
+  const instagramUrl = settings.instagram || "https://www.instagram.com/vijayconstruction86?stkn=MXgwMHQwdWt3aXJxeA==";
 
   return (
     <div className="relative min-h-screen flex flex-col bg-[#FBF9F5]">
@@ -43,10 +45,10 @@ export default async function ContactPage() {
 
         {/* Studio Coordinates Info Bar */}
         <div className="max-w-7xl mx-auto px-6 sm:px-8 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="border border-[#141414]/10 bg-white p-6 space-y-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+            <div className="border border-[#141414]/10 bg-white p-5 space-y-2">
               <MapPin className="w-5 h-5 text-[#C5A880]" />
-              <div className="text-xs uppercase font-mono-tech tracking-wider text-stone-500">
+              <div className="text-[11px] uppercase font-mono-tech tracking-wider text-stone-500">
                 Design Studio & Office
               </div>
               <p className="text-xs text-stone-800 leading-relaxed">
@@ -62,9 +64,9 @@ export default async function ContactPage() {
               </a>
             </div>
 
-            <div className="border border-[#141414]/10 bg-white p-6 space-y-2">
+            <div className="border border-[#141414]/10 bg-white p-5 space-y-2">
               <Phone className="w-5 h-5 text-[#C5A880]" />
-              <div className="text-xs uppercase font-mono-tech tracking-wider text-stone-500">
+              <div className="text-[11px] uppercase font-mono-tech tracking-wider text-stone-500">
                 Direct Telephony
               </div>
               <div className="text-xs text-stone-800 flex flex-col gap-1">
@@ -77,34 +79,50 @@ export default async function ContactPage() {
                   );
                 })}
               </div>
-              <div className="text-[11px] text-stone-500">Direct Principal Desk</div>
+              <div className="text-[10px] text-stone-500">Direct Principal Desk</div>
             </div>
 
-            <div className="border border-[#141414]/10 bg-white p-6 space-y-2">
+            <div className="border border-[#141414]/10 bg-white p-5 space-y-2">
               <MessageCircle className="w-5 h-5 text-[#25D366]" />
-              <div className="text-xs uppercase font-mono-tech tracking-wider text-stone-500">
-                Instant Messaging
+              <div className="text-[11px] uppercase font-mono-tech tracking-wider text-stone-500">
+                Instant WhatsApp
               </div>
-              <p className="text-xs text-stone-800">WhatsApp Concierge</p>
+              <p className="text-xs text-stone-800">{whatsapp}</p>
               <a
                 href={`https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block text-[11px] text-[#25D366] font-semibold underline pt-1"
               >
-                Start Chat →
+                Chat on WhatsApp →
               </a>
             </div>
 
-            <div className="border border-[#141414]/10 bg-white p-6 space-y-2">
+            <div className="border border-[#141414]/10 bg-white p-5 space-y-2">
+              <InstagramIcon className="w-5 h-5 text-[#E1306C]" />
+              <div className="text-[11px] uppercase font-mono-tech tracking-wider text-stone-500">
+                Official Instagram
+              </div>
+              <p className="text-xs text-stone-800">@vijayconstruction86</p>
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-[11px] text-[#E1306C] font-semibold underline pt-1"
+              >
+                Follow Profile →
+              </a>
+            </div>
+
+            <div className="border border-[#141414]/10 bg-white p-5 space-y-2">
               <Clock className="w-5 h-5 text-[#C5A880]" />
-              <div className="text-xs uppercase font-mono-tech tracking-wider text-stone-500">
+              <div className="text-[11px] uppercase font-mono-tech tracking-wider text-stone-500">
                 Hours of Operation
               </div>
               <p className="text-xs text-stone-800 leading-relaxed">
                 {workingHours}
               </p>
-              <div className="text-[11px] text-stone-500">Sunday by Appointment</div>
+              <div className="text-[10px] text-stone-500">Sunday by Appointment</div>
             </div>
           </div>
         </div>

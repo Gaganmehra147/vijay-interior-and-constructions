@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, Phone, MessageCircle } from "lucide-react";
+import InstagramIcon from "@/components/icons/InstagramIcon";
 
 interface NavbarProps {
   phone?: string;
@@ -147,6 +148,18 @@ export default function Navbar({
               )}
             </div>
 
+            {/* Instagram Social Link */}
+            <a
+              href="https://www.instagram.com/vijayconstruction86?stkn=MXgwMHQwdWt3aXJxeA=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-7 h-7 border border-white/20 flex items-center justify-center bg-white/5 hover:border-[#E1306C] hover:bg-[#E1306C]/15 text-stone-300 hover:text-[#E1306C] transition-colors shrink-0"
+              title="Follow on Instagram (@vijayconstruction86)"
+              aria-label="Vijay Construction Instagram"
+            >
+              <InstagramIcon className="w-3.5 h-3.5" />
+            </a>
+
             {/* Architectural Hairline Divider */}
             <div className="h-4 w-px bg-white/20 shrink-0 hidden xl:block" />
 
@@ -251,6 +264,16 @@ export default function Navbar({
                   <span>WhatsApp</span>
                 </a>
               </div>
+
+              <a
+                href="https://www.instagram.com/vijayconstruction86?stkn=MXgwMHQwdWt3aXJxeA=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 py-2.5 border border-[#E1306C]/40 text-[#E1306C] text-xs tracking-wider hover:bg-[#E1306C]/10 transition-colors"
+              >
+                <InstagramIcon className="w-3.5 h-3.5" />
+                <span>Follow on Instagram (@vijayconstruction86)</span>
+              </a>
             </div>
           </div>
         </div>

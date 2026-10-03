@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
+import InstagramIcon from "@/components/icons/InstagramIcon";
 
 interface FooterProps {
   settings?: Record<string, string>;
@@ -14,6 +15,7 @@ export default function Footer({ settings = {} }: FooterProps) {
   const address = settings.address || "Shop No. 10, Sanjeevani Nagar, Garha, Jabalpur (M.P.)";
   const workingHours = settings.working_hours || "Monday – Saturday: 9:30 AM – 7:00 PM";
   const mapsUrl = settings.google_maps_url || "https://maps.google.com/?q=Shop+No+10+Sanjeevani+Nagar+Garha+Jabalpur";
+  const instagramUrl = settings.instagram || "https://www.instagram.com/vijayconstruction86?stkn=MXgwMHQwdWt3aXJxeA==";
 
   return (
     <footer className="bg-[#121212] text-[#FBF9F5] border-t border-white/10 relative overflow-hidden">
@@ -62,7 +64,7 @@ export default function Footer({ settings = {} }: FooterProps) {
             {settings.footer_bio ||
               "Vijay Interior & Construction is a multidisciplinary architecture, interior design, and civil construction studio crafting enduring environments built around the way you live."}
           </p>
-          <div className="pt-2 flex items-center gap-3">
+          <div className="pt-2 flex flex-wrap items-center gap-3">
             <a
               href={`https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`}
               target="_blank"
@@ -71,6 +73,15 @@ export default function Footer({ settings = {} }: FooterProps) {
             >
               <MessageCircle className="w-3.5 h-3.5" />
               <span>Direct WhatsApp</span>
+            </a>
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-1.5 border border-[#E1306C]/40 text-[#E1306C] text-xs hover:bg-[#E1306C]/10 transition-colors"
+            >
+              <InstagramIcon className="w-3.5 h-3.5" />
+              <span>Instagram</span>
             </a>
             <a
               href={mapsUrl}

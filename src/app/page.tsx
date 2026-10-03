@@ -6,6 +6,7 @@ import BrandStatement from "@/components/home/BrandStatement";
 import ServicesSection from "@/components/home/ServicesSection";
 import ProjectShowcase from "@/components/home/ProjectShowcase";
 import WhyVijaySection from "@/components/home/WhyVijaySection";
+import FoundersProfile from "@/components/home/FoundersProfile";
 import BeforeAfterSlider from "@/components/home/BeforeAfterSlider";
 import ProcessSection from "@/components/home/ProcessSection";
 import CraftsmanshipMaterials from "@/components/home/CraftsmanshipMaterials";
@@ -102,6 +103,9 @@ export default async function HomePage() {
 
         {/* 5. Why Vijay Trust Metrics */}
         <WhyVijaySection stats={stats} />
+
+        {/* 6. Founder's Profile: Vijay Ahirwar */}
+        <FoundersProfile instagramUrl={settings.instagram} phone={phone} />
 
         {/* 7. Before / After Transformation Slider */}
         <BeforeAfterSlider />
